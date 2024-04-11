@@ -1,18 +1,24 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import {RouterLink, RouterView} from 'vue-router'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default{
+    name:'App',
+    components:{
+      RouterLink,
+      RouterView
+    }
   }
-}
 </script>
+
+<template>
+  <nav>
+    <RouterLink to="/">Home</RouterLink> |
+    <RouterLink to="/icreative">ICreative</RouterLink> |
+    <RouterLink to="/json">Json</RouterLink> |
+    <RouterLink :to="{ name: 'Products', params: { id: 'divyesh' } }">Product</RouterLink>
+  </nav>
+  <RouterView/>
+</template>
 
 <style>
 #app {
@@ -21,6 +27,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
