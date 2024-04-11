@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Symfony!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{% if app.debug %}
+    <p>Requested Method: {{app.request.method}}</p>
+    <p>Application Environment: {{ app.environment }}</p>
+{% endif %}
+
+{# Accessing global variables in Twig templates #}
+{% if app_name %}
+<h1>{{ app_name }}</h1>
+<p>Welcome to {{ app_name }}!</p>
+<p>Provided by {{ company_name }}</p>
+{% endif %}
+
+<div class="example-wrapper">
+    <h1> {{ message }}! ✅</h1>
+    <h1> {{ db }}! ✅</h1>
+    <h1> {{ env }}! ✅</h1>
+    <h1> {{ databaseUrl }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/var/www/html/SymfonyCourse/src/Controller/HelloController.php</code></li>
+        <li>Your template at <code>/var/www/html/SymfonyCourse/templates/hello/index.html.twig</code></li>
+    </ul>
+
+    <a href="{{path('app_participants')}}"> Participant List</a>
+    <img src="{{ asset('images/logo.png') }}" alt="Symfony!"/>
+</div>
+{% endblock %}

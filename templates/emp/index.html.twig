@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee List{% endblock %}
+
+{% block body %}
+    <h1>hello {{ app.user.email }}</h1>
+    <a href="{{ path('app_logout') }}">Logout</a>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Employee List</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-primary" href="{{ path('app_emp_new') }}"> 
+                    Add New Employee 
+                </a>
+            </div>
+            <div class="card-body">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>BirthDate</th>
+                            <th>Technology</th>
+                            <th>Gender</th>
+                            <th>Email_Id</th>
+                            <th>Profile Link</th>
+                            <th>Profile Pic</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in employees %}
+                        <tr>
+                            <td>{{ employee.id }}</td>
+                            <td>{{ employee.Name }}</td>
+                            <td>{{ employee.BirthDate ? employee.BirthDate|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ employee.technology }}</td>
+                            <td>{{ employee.gender }}</td>
+                            <td>{{ employee.emailId }}</td>
+                            <td>{{ employee.profileLink }}</td>
+                            <td><img src="{{ asset('uploads/profile_image/') ~ employee.profilePic }}" class="logo" alt="profile pic" height="100"></td>
+                            <td>
+                                <a type="button" class="btn btn-warning" href="{{ path('app_emp_show', {'id': employee.id}) }}">show</a>
+                                <a type="button" class="btn btn-dark" href="{{ path('app_emp_edit', {'id': employee.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table> 
+        </div>
+    </div>
+</div>
+{% endblock %}

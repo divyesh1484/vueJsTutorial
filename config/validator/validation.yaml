@@ -1,0 +1,5 @@
+# config/validator/validation.yaml
+App\Entity\Employee:
+    properties:
+        Name:
+            - NotBlank: ~

@@ -3,3 +3,55 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+app_hello:
+    path: /hello
+    controller: App\Controller\HelloController::index
+
+app_lucky_number:
+    path: /lucky/number
+    controller: App\Controller\LuckyController::number
+
+app_participants:
+    path: /participants
+    controller: App\Controller\ParticipatesController::participant
+
+api_action:
+    path: /api/action
+    controller: App\Controller\ApiController::apiAction
+app_emp_index:
+    path: /
+    controller: App\Controller\EmpController::index
+app_emp_new:
+    path: /new
+    controller: App\Controller\EmpController::new
+app_emp_show:
+    path: /show/{id}
+    controller: App\Controller\EmpController::show
+app_emp_edit:
+    path: /edit/{id}
+    controller: App\Controller\EmpController::edit
+app_emp_delete: 
+    path: /delete/{id}
+    controller: App\Controller\EmpController::delete
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+app_forgot_password_request:
+    path: /reset-password
+    controller: App\Controller\ResetPasswordController::request
+app_check_email:
+    path: /check-mail
+    controller: App\Controller\ResetPasswordController::checkEmail
+app_reset_password:
+    path: /reset/{token}
+    controller: App\Controller\ResetPasswordController::reset
+app_verify_email:
+    path: /verify/email
+    controller: 
