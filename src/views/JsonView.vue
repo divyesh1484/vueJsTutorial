@@ -17,6 +17,7 @@
 		v-model:lastname="last"
 		@increase-by="increaseCount"
 	/>
+	<input v-focus />
 </template>
 
 
@@ -24,6 +25,10 @@
 import { ref, computed } from 'vue'
 import { count } from '../store.js'
 import ProvideInjectView from '@/views/ProvideInjectView.vue' 
+
+const focus = {
+  mounted: (el) => el.focus()
+}
 
 export default{
 	components:{ ProvideInjectView },
@@ -44,7 +49,7 @@ export default{
 
 		}
 	},
-
+	directives: { focus },
   computed: {
   inOptionsFromComposition () {
     return this.obj.arr.length > 0 ? 'Yes' : 'No';
@@ -61,7 +66,7 @@ export default{
 			this.obj.arr.push(data.results);
 		},
 		updatedLocation(){
-			this.location = computed( () => this.changeLocation )
+			this.location = this.changeLocation
 		},
 		increaseCount(n) {
    this.num += n

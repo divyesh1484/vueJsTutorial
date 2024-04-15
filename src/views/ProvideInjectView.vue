@@ -3,15 +3,15 @@
     inject:['location','updateLocation'],
     props:{
       firstname : String,
-      lastname : String,
-      increaseBy : Function
+      lastname : String
+      //increaseBy : Function
     }
     ///emits: ['update:firstname', 'update:lastname']
   }
 </script>
 
 <template>
-<button @click="this.updateLocation">{{ this.location }}</button>
+<button @click="this.updateLocation">Update Location</button>
 <p>
   Message to grand child: {{ this.location }}
 </p>
